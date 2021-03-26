@@ -22,11 +22,11 @@ class FloatingNavbar extends StatefulWidget {
   final double elevation;
 
   FloatingNavbar({
-    Key key,
-    @required this.items,
-    @required this.currentIndex,
-    @required this.onTap,
-    ItemBuilder itemBuilder,
+    Key? key,
+    required this.items,
+    required this.currentIndex,
+    required this.onTap,
+    ItemBuilder? itemBuilder,
     this.backgroundColor = Colors.black,
     this.selectedBackgroundColor = Colors.white,
     this.selectedItemColor = Colors.black,
@@ -102,17 +102,17 @@ class _FloatingNavbarState extends State<FloatingNavbar> {
 }
 
 ItemBuilder _defaultItemBuilder({
-  Function(int val) onTap,
-  List<FloatingNavbarItem> items,
-  int currentIndex,
-  Color selectedBackgroundColor,
-  Color selectedItemColor,
-  Color unselectedItemColor,
-  Color backgroundColor,
-  double fontSize,
-  double iconSize,
-  double itemBorderRadius,
-  double borderRadius,
+  Function(int val)? onTap,
+  List<FloatingNavbarItem>? items,
+  int? currentIndex,
+  Color? selectedBackgroundColor,
+  Color? selectedItemColor,
+  Color? unselectedItemColor,
+  Color? backgroundColor,
+  double? fontSize,
+  double? iconSize,
+  double? itemBorderRadius,
+  double? borderRadius,
 }) {
   return (BuildContext context, FloatingNavbarItem item) => Expanded(
         child: Row(
@@ -122,13 +122,13 @@ ItemBuilder _defaultItemBuilder({
             AnimatedContainer(
               duration: Duration(milliseconds: 300),
               decoration: BoxDecoration(
-                  color: currentIndex == items.indexOf(item)
+                  color: currentIndex == items!.indexOf(item)
                       ? selectedBackgroundColor
                       : backgroundColor,
-                  borderRadius: BorderRadius.circular(itemBorderRadius)),
+                  borderRadius: BorderRadius.circular(itemBorderRadius!)),
               child: InkWell(
                 onTap: () {
-                  onTap(items.indexOf(item));
+                  onTap!(items.indexOf(item));
                 },
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
